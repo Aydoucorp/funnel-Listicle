@@ -1,0 +1,91 @@
+// Schema Prisma : voir CLAUDE.md section 5.
+// Regle RGPD : la table Event ne contient AUCUNE donnee personnelle.
+// L'email n'existe que dans la table Lead, ecrite uniquement apres consentement explicite.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id            String    @id @default(uuid())
+  startedAt     DateTime  @default(now())
+  lastSeenAt    DateTime  @default(now())
+  completedAt   DateTime?
+  resultProfile String?
+  optedIn       Boolean   @default(false)
+  device        String?
+  referrer      String?
+  utmSource     String?
+  utmMedium     String?
+  utmCampaign   String?
+
+  events Event[]
+  lead   Lead?
+
+  @@index([startedAt])
+  @@index([resultProfile])
+  @@index([optedIn])
+  @@index([utmSource])
+  @@index([device])
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  sessionId   String
+  type        String
+  questionId  String?
+  answerValue String?
+  createdAt   DateTime @default(now())
+
+  session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([type])
+  @@index([createdAt])
+  @@index([questionId])
+}
+
+// Donnees personnelles : uniquement apres consentement explicite (RGPD).
+model Lead {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  prenom       String
+  profile      String
+  consentAt    DateTime @default(now())
+  createdAt    DateTime @default(now())
+  mailerliteOk Boolean  @default(false)
+  sessionId    String?  @unique
+
+  session Session? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+  @@index([profile])
+}
+
+// Compte du back-office. Mot de passe hache (bcrypt), modifiable dans /admin.
+model AdminUser {
+  id                String   @id @default(uuid())
+  username          String   @unique
+  passwordHash      String
+  createdAt         DateTime @default(now())
+  passwordChangedAt DateTime @default(now())
+  lastLoginAt       DateTime?
+  // Incremente a chaque changement de mot de passe : invalide les sessions ouvertes.
+  sessionVersion    Int      @default(1)
+}
+
+// Rate limiting durable (serverless = plusieurs instances, un compteur en memoire ne suffit pas).
+model RateLimit {
+  id          String   @id @default(uuid())
+  bucket      String
+  windowStart DateTime
+  count       Int      @default(1)
+
+  @@unique([bucket, windowStart])
+  @@index([windowStart])
+}

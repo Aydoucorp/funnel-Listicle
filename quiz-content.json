@@ -1,0 +1,161 @@
+{
+  "meta": {
+    "brand": "Émilie & sa maison saine",
+    "instagram": "@emilie_clean",
+    "quizTitle": "Qu'est-ce qui pollue vraiment ta maison ?",
+    "quizSubtitle": "En 2 minutes, je t'aide à y voir clair chez toi. À la fin, je t'offre le guide qui te ressemble et mes recettes maison, avec plaisir.",
+    "estimatedTime": "2 min",
+    "language": "fr",
+    "note": "Ne JAMAIS inventer de chiffre ni d'affirmation santé non sourcée. Le quiz parle de RESSENTI et d'HABITUDES, pas de diagnostic médical."
+  },
+
+  "profiles": {
+    "bebe":   { "label": "La maman qui protège son bébé", "group": "Bébé",          "ebook": "Le sol où ton bébé rampe" },
+    "animal": { "label": "Le maître qui protège son animal", "group": "Animal",       "ebook": "Ce que ton animal lèche après ton ménage" },
+    "air":    { "label": "Celle qui veut un air vraiment sain", "group": "Air sain",  "ebook": "Une maison vraiment fraîche" },
+    "budget": { "label": "Celle qui veut alléger la facture", "group": "Budget",      "ebook": "Le vrai prix de ton placard" },
+    "charge": { "label": "Celle qui veut alléger sa charge mentale", "group": "Charge mentale", "ebook": "Une maison saine sans y laisser ta tête" }
+  },
+
+  "scoring": {
+    "rule": "Additionner les points par profil sur toutes les réponses. Le profil au score le plus élevé gagne.",
+    "tieBreakOrder": ["bebe", "animal", "air", "budget", "charge"]
+  },
+
+  "bonusForAll": {
+    "ebook": "Ma trousse ménage 100% maison (recettes)",
+    "usage": "Promis dès l'accroche et offert à TOUTES, quel que soit le profil gagnant."
+  },
+
+  "questions": [
+    {
+      "id": "q1_foyer",
+      "order": 1,
+      "type": "multi",
+      "title": "Qui vit sous ton toit ?",
+      "help": "Plusieurs réponses possibles.",
+      "options": [
+        { "value": "bebe",    "label": "Un bébé / un jeune enfant",        "points": { "bebe": 3 } },
+        { "value": "animal",  "label": "Un animal (chat, chien)",          "points": { "animal": 3 } },
+        { "value": "grands",  "label": "Des enfants plus grands",          "points": {} },
+        { "value": "adultes", "label": "Juste des adultes",                "points": {} }
+      ]
+    },
+    {
+      "id": "q2_inquietude",
+      "order": 2,
+      "type": "single",
+      "title": "Ce qui t'inquiète le plus en ce moment ?",
+      "options": [
+        { "value": "sante",   "label": "Ma santé et celle de mes proches",      "points": { "air": 2 } },
+        { "value": "air",     "label": "L'air et les odeurs qu'on respire",     "points": { "air": 2 } },
+        { "value": "cout",    "label": "Ce que tout ça me coûte",               "points": { "budget": 2 } },
+        { "value": "temps",   "label": "Le temps et l'énergie que ça me prend", "points": { "charge": 2 } }
+      ]
+    },
+    {
+      "id": "q3_ressenti",
+      "order": 3,
+      "type": "single",
+      "title": "Pendant ou après le ménage, il t'arrive de ressentir… ?",
+      "options": [
+        { "value": "tete",    "label": "Mal de tête / nausée",              "points": { "air": 3 } },
+        { "value": "peau",    "label": "Peau qui gratte / gorge irritée",   "points": { "air": 3 } },
+        { "value": "rien",    "label": "Rien de spécial",                   "points": {} },
+        { "value": "jamais",  "label": "Je n'y ai jamais fait attention",   "points": {} }
+      ]
+    },
+    {
+      "id": "q4_placard",
+      "order": 4,
+      "type": "single",
+      "title": "À quoi ressemble ton placard à produits ?",
+      "options": [
+        { "value": "deborde", "label": "Il déborde, un produit par pièce",      "points": { "budget": 3 } },
+        { "value": "nouveau", "label": "Je rachète souvent des « nouveautés »", "points": { "budget": 2 } },
+        { "value": "basiques","label": "Quelques basiques, c'est tout",         "points": {} },
+        { "value": "flou",    "label": "Je ne sais plus ce qu'il y a dedans",   "points": { "charge": 1 } }
+      ]
+    },
+    {
+      "id": "q5_rapport",
+      "order": 5,
+      "type": "single",
+      "title": "Ton rapport au ménage aujourd'hui ?",
+      "options": [
+        { "value": "epuise",  "label": "Il m'épuise, je culpabilise",             "points": { "charge": 3 } },
+        { "value": "sain",    "label": "Je veux surtout du sain pour les miens",  "points": { "air": 2 } },
+        { "value": "depense", "label": "Je veux arrêter de trop dépenser",        "points": { "budget": 2 } },
+        { "value": "mieux",   "label": "Je gère, mais je veux mieux",             "points": {} }
+      ]
+    },
+    {
+      "id": "q6_aspiration",
+      "order": 6,
+      "type": "single",
+      "title": "Au fond, ce que tu veux vraiment ?",
+      "help": "Vas-y au feeling, réponds avec le cœur.",
+      "options": [
+        { "value": "bebe",    "label": "Protéger mon bébé, mon trésor",             "points": { "bebe": 4 } },
+        { "value": "animal",  "label": "Protéger mon animal, mon compagnon",        "points": { "animal": 4 } },
+        { "value": "sante",   "label": "Protéger ma santé et celle de mes proches", "points": { "air": 3 } },
+        { "value": "argent",  "label": "Arrêter de jeter mon argent par les fenêtres", "points": { "budget": 3 } },
+        { "value": "mentale", "label": "Alléger ma charge mentale",                 "points": { "charge": 3 } }
+      ]
+    }
+  ],
+
+  "leadGate": {
+    "position": "Juste avant la page de résultat.",
+    "title": "Ça y est, ton diagnostic est prêt 💙",
+    "subtitle": "Dis-moi juste où t'envoyer tout ça : ton résultat, ton guide personnalisé et mes recettes maison. C'est mon cadeau, et c'est de bon cœur.",
+    "fields": [
+      { "name": "prenom", "label": "Ton prénom", "required": true },
+      { "name": "email",  "label": "Ton email",  "required": true, "type": "email" }
+    ],
+    "consent": {
+      "required": true,
+      "label": "J'accepte de recevoir mes guides et les conseils d'Émilie par email. Je peux me désabonner à tout moment.",
+      "note": "RGPD : consentement explicite obligatoire + lien vers la politique de confidentialité."
+    },
+    "cta": "Voir mon diagnostic"
+  },
+
+  "resultPages": {
+    "bebe": {
+      "headline": "Toi, ce qui compte d'abord, c'est ton bébé 👶",
+      "body": "Ton bébé rampe partout et met tout à la bouche, et toi tu te demandes si ton sol est vraiment sain. Cette petite inquiétude, tellement de mamans la vivent. Respire, je suis là. Je t'ai préparé un guide tout doux pour un sol propre et sans danger, sans te prendre la tête.",
+      "ebook": "Le sol où ton bébé rampe",
+      "bonus": "Et mes recettes maison, en cadeau",
+      "nextStep": "File voir ta boîte mail, ton guide et mes recettes t'attendent déjà. Pense juste à confirmer ton adresse en un clic, et tout arrive. Merci d'être là 💙"
+    },
+    "animal": {
+      "headline": "Toi, tu veilles sur ton compagnon 🐾",
+      "body": "Ton animal se lèche les pattes après ton ménage, et au fond de toi, tu sens que le produit y est pour quelque chose. Ton intuition est bonne, et elle mérite qu'on l'écoute. Je t'ai préparé des gestes tout simples pour le protéger, sans rien compliquer.",
+      "ebook": "Ce que ton animal lèche après ton ménage",
+      "bonus": "Et mes recettes maison, en cadeau",
+      "nextStep": "File voir ta boîte mail, ton guide et mes recettes t'attendent déjà. Pense juste à confirmer ton adresse en un clic, et tout arrive. Merci d'être là 💙"
+    },
+    "air": {
+      "headline": "Toi, tu veux respirer un air vraiment sain 🌬️",
+      "body": "Maux de tête, gorge qui pique, odeurs de synthèse qui traînent… et si ta maison sentait juste le propre, le vrai ? « Ça sent bon » ne veut pas dire « c'est propre », et je vais te montrer comment enlever les odeurs à la source, tout en douceur.",
+      "ebook": "Une maison vraiment fraîche",
+      "bonus": "Et mes recettes maison, en cadeau",
+      "nextStep": "File voir ta boîte mail, ton guide et mes recettes t'attendent déjà. Pense juste à confirmer ton adresse en un clic, et tout arrive. Merci d'être là 💙"
+    },
+    "budget": {
+      "headline": "Toi, tu veux arrêter de trop dépenser 💸",
+      "body": "Un produit pour chaque pièce, un placard qui déborde, une facture qui grimpe sans qu'on comprenne pourquoi. Je te rassure tout de suite : quelques basiques font le même travail pour bien moins cher. On va faire le calcul ensemble, tranquillement, et tu vas voir la différence.",
+      "ebook": "Le vrai prix de ton placard",
+      "bonus": "Et mes recettes maison, en cadeau",
+      "nextStep": "File voir ta boîte mail, ton guide et mes recettes t'attendent déjà. Pense juste à confirmer ton adresse en un clic, et tout arrive. Merci d'être là 💙"
+    },
+    "charge": {
+      "headline": "Toi, tu as surtout besoin de souffler 😮‍💨",
+      "body": "Le ménage te pèse, et parfois tu culpabilises. Écoute-moi bien : tu n'es ni fainéante ni sale. Tu es juste fatiguée, ou personne ne t'a jamais montré comment faire simplement. Je t'ai préparé une méthode toute douce, à ton rythme, rien que pour toi.",
+      "ebook": "Une maison saine sans y laisser ta tête",
+      "bonus": "Et mes recettes maison, en cadeau",
+      "nextStep": "File voir ta boîte mail, ton guide et mes recettes t'attendent déjà. Pense juste à confirmer ton adresse en un clic, et tout arrive. Merci d'être là 💙"
+    }
+  }
+}
